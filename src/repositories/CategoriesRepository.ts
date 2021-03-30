@@ -25,6 +25,12 @@ class CategoriesRepository {
   public async list(): Promise<Category[]> {
     return this.categories
   }
+
+  public async findByName(name: string): Promise<Category> {
+    const category = this.categories.find(cat => cat.name === name)
+
+    return category
+  }
 }
 
 export { CategoriesRepository }
