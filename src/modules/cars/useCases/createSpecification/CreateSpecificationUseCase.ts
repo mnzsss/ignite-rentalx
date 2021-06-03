@@ -1,13 +1,13 @@
 import AppError from '@shared/errors/AppError'
 
-import { ISpecificationsRepository } from '../repositories/implementations/ISpecificationsRepository'
+import { ISpecificationsRepository } from '../../repositories/implementations/ISpecificationsRepository'
 
 interface IRequest {
   name: string
   description: string
 }
 
-class CreateSpecificationService {
+class CreateSpecificationUseCase {
   constructor(private specificationsRepository: ISpecificationsRepository) {}
 
   public async run({ name, description }: IRequest): Promise<void> {
@@ -23,4 +23,4 @@ class CreateSpecificationService {
   }
 }
 
-export { CreateSpecificationService }
+export { CreateSpecificationUseCase }
