@@ -1,12 +1,22 @@
 import { ICreateCategoryDTO } from '../dtos/ICreateCategoryDTO'
 import { Category } from '../models/Category'
-import { ICategoriesRepository } from './ICategoriesRepository'
+import { ICategoriesRepository } from './implementations/ICategoriesRepository'
 
 class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[]
 
-  constructor() {
+  private static INSTACE: CategoriesRepository
+
+  private constructor() {
     this.categories = []
+  }
+
+  public static getInstance(): CategoriesRepository {
+    if (!CategoriesRepository.INSTACE) {
+      CategoriesRepository.INSTACE = new CategoriesRepository()
+    }
+
+    return CategoriesRepository.INSTACE
   }
 
   public async create({
@@ -27,7 +37,7 @@ class CategoriesRepository implements ICategoriesRepository {
     return this.categories
   }
 
-  public async findByName(name: string): Promise<Category> {
+  public async findByName(name: string): Promise<Category | undefined> {
     const category = this.categories.find(cat => cat.name === name)
 
     return category

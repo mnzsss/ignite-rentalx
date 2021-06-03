@@ -1,12 +1,13 @@
-import AppError from '../errors/AppError'
-import { ICategoriesRepository } from '../repositories/ICategoriesRepository'
+import AppError from '@shared/errors/AppError'
+
+import { ICategoriesRepository } from '../../repositories/implementations/ICategoriesRepository'
 
 interface IRequest {
   name: string
   description: string
 }
 
-class CreateCategoryService {
+class CreateCategoryUseCase {
   constructor(private categoriesRepository: ICategoriesRepository) {}
 
   public async run({ name, description }: IRequest): Promise<void> {
@@ -20,4 +21,4 @@ class CreateCategoryService {
   }
 }
 
-export { CreateCategoryService }
+export { CreateCategoryUseCase }
