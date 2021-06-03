@@ -1,3 +1,4 @@
+import AppError from '../errors/AppError'
 import { ICategoriesRepository } from '../repositories/ICategoriesRepository'
 
 interface IRequest {
@@ -12,7 +13,7 @@ class CreateCategoryService {
     const categoryExists = await this.categoriesRepository.findByName(name)
 
     if (categoryExists) {
-      throw new Error('Category already exists.')
+      throw new AppError('Essa categoria já existe.')
     }
 
     await this.categoriesRepository.create({ name, description })

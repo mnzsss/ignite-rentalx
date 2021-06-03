@@ -6,7 +6,7 @@ import { CreateCategoryService } from '../services/CreateCategoryService'
 const categoriesRouter = Router()
 const categoriesRepository = new CategoriesRepository()
 
-categoriesRouter.post('/', async (req: Request, res: Response) => {
+categoriesRouter.post('/create', async (req: Request, res: Response) => {
   const { name, description } = req.body
 
   const createCategory = new CreateCategoryService(categoriesRepository)
@@ -16,7 +16,7 @@ categoriesRouter.post('/', async (req: Request, res: Response) => {
   return res.status(201).send()
 })
 
-categoriesRouter.get('/', async (req: Request, res: Response) => {
+categoriesRouter.get('/list', async (req: Request, res: Response) => {
   const categories = await categoriesRepository.list()
 
   return res.status(201).json(categories)
