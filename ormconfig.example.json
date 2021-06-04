@@ -1,0 +1,10 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "",
+  "password": "",
+  "database": "",
+  "entities": ["src/modules/**/entity/**/*.ts"],
+  "migrations": ["src/shared/database/migration/**/*.ts"]
+}
