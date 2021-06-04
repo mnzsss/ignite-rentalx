@@ -67,9 +67,15 @@
         "description": "Importar uma ou mais categorias a partir de um arquivo.",
         "requestBody": {
           "content": {
-            "application/octec-stream": {
+            "multipart/form-data": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
               }
             }
           }
