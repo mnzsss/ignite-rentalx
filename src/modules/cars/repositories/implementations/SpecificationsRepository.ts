@@ -1,8 +1,8 @@
 import { getRepository, Repository } from 'typeorm'
 
-import { ICreateSpecificationDTO } from '../dtos/ICreateSpecificationDTO'
-import { Specification } from '../entities/Specification'
-import { ISpecificationsRepository } from './implementations/ISpecificationsRepository'
+import { ICreateSpecificationDTO } from '../../dtos/ICreateSpecificationDTO'
+import { Specification } from '../../entities/Specification'
+import { ISpecificationsRepository } from '../ISpecificationsRepository'
 
 class SpecificationsRepository implements ISpecificationsRepository {
   private ormRepository: Repository<Specification>

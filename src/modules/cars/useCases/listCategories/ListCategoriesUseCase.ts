@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe'
 
 import { Category } from '@modules/cars/entities/Category'
 
-import { ICategoriesRepository } from '../../repositories/implementations/ICategoriesRepository'
+import { ICategoriesRepository } from '../../repositories/ICategoriesRepository'
 
 @injectable()
 class ListCategoriesUseCase {

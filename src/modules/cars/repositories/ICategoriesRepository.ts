@@ -1,5 +1,5 @@
-import { ICreateCategoryDTO } from '../../dtos/ICreateCategoryDTO'
-import { Category } from '../../entities/Category'
+import { ICreateCategoryDTO } from '../dtos/ICreateCategoryDTO'
+import { Category } from '../entities/Category'
 
 export interface ICategoriesRepository {
   findByName(name: string): Promise<Category | undefined>
