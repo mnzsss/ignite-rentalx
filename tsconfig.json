@@ -5,6 +5,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
+    "resolveJsonModule": true,
     "strictPropertyInitialization": false,
     "baseUrl": "./src",
     "allowJs": true,
