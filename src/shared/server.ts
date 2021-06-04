@@ -21,6 +21,10 @@ import swaggerFile from './swagger.json'
   await import('./database')
   console.info(new Date(), 'Connected to database')
 
+  console.info(new Date(), 'Starting to load containers')
+  await import('./container')
+  console.info(new Date(), 'Containers loaded successfully')
+
   app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
     if (err instanceof AppError) {
       return res

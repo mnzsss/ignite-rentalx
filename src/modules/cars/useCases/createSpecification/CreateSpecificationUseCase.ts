@@ -1,3 +1,5 @@
+import { inject, injectable } from 'tsyringe'
+
 import AppError from '@shared/errors/AppError'
 
 import { ISpecificationsRepository } from '../../repositories/implementations/ISpecificationsRepository'
@@ -7,8 +9,12 @@ interface IRequest {
   description: string
 }
 
+@injectable()
 class CreateSpecificationUseCase {
-  constructor(private specificationsRepository: ISpecificationsRepository) {}
+  constructor(
+    @inject('SpecificationsRepository')
+    private specificationsRepository: ISpecificationsRepository
+  ) {}
 
   public async run({ name, description }: IRequest): Promise<void> {
     const specificationExists = await this.specificationsRepository.findByName(

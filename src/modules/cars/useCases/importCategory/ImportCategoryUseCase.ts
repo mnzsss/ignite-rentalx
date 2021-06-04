@@ -1,15 +1,20 @@
 import csvParse from 'csv-parse'
 import fs from 'fs'
+import { inject, injectable } from 'tsyringe'
 
-import { CategoriesRepository } from '@modules/cars/repositories/CategoriesRepository'
+import { ICategoriesRepository } from '@modules/cars/repositories/implementations/ICategoriesRepository'
 
 type IImportCategory = {
   name: string
   description: string
 }
 
+@injectable()
 class ImportCategoryUseCase {
-  constructor(private categoriesRepository: CategoriesRepository) {}
+  constructor(
+    @inject('CategoriesRepository')
+    private categoriesRepository: ICategoriesRepository
+  ) {}
 
   private async loadCategories(
     file: Express.Multer.File
