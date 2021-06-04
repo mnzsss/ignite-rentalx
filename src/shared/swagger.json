@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "RentalX Docs",
+    "title": "RentalX",
     "description": "Documentação da API.",
     "version": "1.0.0",
     "contact": {
@@ -60,11 +60,127 @@
         }
       }
     },
+    "/api/categories/import": {
+      "post": {
+        "tags": ["Categoria"],
+        "summary": "Importar Categoria.",
+        "description": "Importar uma ou mais categorias a partir de um arquivo.",
+        "requestBody": {
+          "content": {
+            "application/octec-stream": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
     "/api/categories/list": {
       "get": {
         "tags": ["Categoria"],
         "summary": "Listar todas as categorias.",
         "description": "Listar todas as suas categorias.",
+        "responses": {
+          "200": {
+            "description": "Sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "categories": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/specifications/create": {
+      "post": {
+        "tags": ["Especificação"],
+        "summary": "Criar uma Especificação",
+        "description": "Criar uma nova especificação.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Câmbio Automático",
+                  "description": "Carro com câmbio automático"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Especificação criada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Especificação já existe."
+          }
+        }
+      }
+    },
+    "/api/specifications/list": {
+      "get": {
+        "tags": ["Especificação"],
+        "summary": "Listar todas as especificações.",
+        "description": "Listar todas as suas especificações.",
         "responses": {
           "200": {
             "description": "Sucesso.",
