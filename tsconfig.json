@@ -12,6 +12,7 @@
     "paths": {
       "@modules/*": ["modules/*"],
       "@shared/*": ["shared/*"],
+      "@config/*": ["config/*"],
       "@providers/*": ["shared/container/providers/*"]
     },
     "esModuleInterop": true,

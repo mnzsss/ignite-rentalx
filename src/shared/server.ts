@@ -32,7 +32,7 @@ import swaggerFile from './swagger.json'
         .json({ status: 'Erro', message: err.message })
     }
 
-    console.log(err)
+    console.error(err)
 
     return res
       .status(500)
