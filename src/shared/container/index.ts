@@ -1,5 +1,7 @@
 import { container, delay } from 'tsyringe'
 
+import './providers'
+
 import { UsersRepository } from '@modules/accounts/repositories/implementations/UsersRepository'
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository'
 import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRepository'

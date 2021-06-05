@@ -11,7 +11,8 @@
     "allowJs": true,
     "paths": {
       "@modules/*": ["modules/*"],
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@providers/*": ["shared/container/providers/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,

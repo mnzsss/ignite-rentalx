@@ -63,7 +63,10 @@
         "newlinesBetween": "always",
         "groups": [
           "module",
-          "/^@shared/",
+          [
+            "/^@shared/",
+            "/^@providers/"
+          ],
           "/^@modules/",
           [
             "parent",

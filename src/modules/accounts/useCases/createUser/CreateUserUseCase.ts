@@ -1,5 +1,6 @@
 import { inject, injectable } from 'tsyringe'
 
+import IHashProvider from '@providers/HashProvider/models/IHashProvider'
 import AppError from '@shared/errors/AppError'
 
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository'
@@ -15,7 +16,10 @@ interface IRequest {
 class CreateUserUseCase {
   constructor(
     @inject('UsersRepository')
-    private usersRepository: IUsersRepository
+    private usersRepository: IUsersRepository,
+
+    @inject('HashProvider')
+    private hashProvider: IHashProvider
   ) {}
 
   public async run({
@@ -24,17 +28,19 @@ class CreateUserUseCase {
     email,
     password
   }: IRequest): Promise<void> {
-    const userExists = await this.usersRepository.findByEmail(email)
+    const userAlreadyExists = await this.usersRepository.findByEmail(email)
 
-    if (userExists) {
+    if (userAlreadyExists) {
       throw new AppError('Esse e-mail já está sendo utilizado.')
     }
+
+    const passwordHashed = await this.hashProvider.generateHash(password)
 
     await this.usersRepository.create({
       driver_license,
       name,
       email,
-      password
+      password: passwordHashed
     })
   }
 }

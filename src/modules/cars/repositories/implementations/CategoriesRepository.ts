@@ -25,7 +25,7 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 
   public async findByName(name: string): Promise<Category | undefined> {
-    return this.ormRepository.findOne({ where: { name } })
+    return this.ormRepository.findOne({ name })
   }
 }
 
