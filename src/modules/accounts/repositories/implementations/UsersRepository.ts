@@ -11,6 +11,9 @@ class UsersRepository implements IUsersRepository {
   constructor() {
     this.ormRepository = getRepository(User)
   }
+  public async update(user: User): Promise<void> {
+    await this.ormRepository.save(user)
+  }
 
   public async findById(id: string): Promise<User | undefined> {
     return this.ormRepository.findOne({ id })

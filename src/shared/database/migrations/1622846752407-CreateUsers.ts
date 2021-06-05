@@ -30,6 +30,11 @@ export class CreateUsers1622846752407 implements MigrationInterface {
             type: 'varchar'
           },
           {
+            name: 'avatar',
+            type: 'varchar',
+            isNullable: true
+          },
+          {
             name: 'isAdmin',
             type: 'boolean',
             default: false

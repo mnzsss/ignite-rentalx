@@ -36,6 +36,7 @@ export async function isAuthenticated(
       throw new AppError('Usuário não existe.', 401)
     }
 
+    req.userId = sub
     return next()
   } catch {
     throw new AppError('Invalid JWT token.', 401)
