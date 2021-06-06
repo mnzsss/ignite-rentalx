@@ -5,6 +5,10 @@
   "username": "",
   "password": "",
   "database": "",
-  "entities": ["src/modules/**/entity/**/*.ts"],
-  "migrations": ["src/shared/database/migration/**/*.ts"]
+  "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+  "entities": ["./src/modules/**/entities/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/shared/infra/typeorm/migrations",
+    "entitiesDir": "./src/modules/**/entities"
+  }
 }

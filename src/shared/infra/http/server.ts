@@ -3,7 +3,8 @@ import express, { Request, NextFunction, Response } from 'express'
 import swaggerUi from 'swagger-ui-express'
 import 'express-async-errors'
 
-import AppError from './errors/AppError'
+import AppError from '@shared/errors/AppError'
+
 import swaggerFile from './swagger.json'
 ;(async function bootstrap() {
   console.info(new Date(), 'Starting to load routes')
@@ -18,11 +19,11 @@ import swaggerFile from './swagger.json'
   app.use('/api', appRoutes)
 
   console.info(new Date(), 'Connecting to database')
-  await import('./database')
+  await import('../typeorm')
   console.info(new Date(), 'Connected to database')
 
   console.info(new Date(), 'Starting to load containers')
-  await import('./container')
+  await import('../../container')
   console.info(new Date(), 'Containers loaded successfully')
 
   app.use((err: Error, req: Request, res: Response, _: NextFunction) => {

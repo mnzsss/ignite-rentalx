@@ -1,6 +1,6 @@
 import { v4 } from 'uuid'
 
-import { User } from '@modules/accounts/entities/User'
+import { User } from '@modules/accounts/infra/typeorm/entities/User'
 
 import { ICreateUserDTO } from '../../dtos/ICreateUserDTO'
 import { IUsersRepository } from '../IUsersRepository'

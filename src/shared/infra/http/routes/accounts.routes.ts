@@ -3,10 +3,10 @@ import multer from 'multer'
 
 import { uploadConfig } from '@config/upload'
 
-import { isAuthenticated } from '@shared/middlewares/isAuthenticated'
-
 import CreateUserController from '@modules/accounts/useCases/createUser/CreateUserController'
 import UpdateUserAvatarController from '@modules/accounts/useCases/updateUserAvatar/UpdateUserAvatarController'
+
+import { isAuthenticated } from '../middlewares/isAuthenticated'
 
 const uploadAvatar = multer(uploadConfig.upload('./tmp/avatar'))
 
