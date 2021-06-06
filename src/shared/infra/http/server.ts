@@ -5,7 +5,7 @@ import 'express-async-errors'
 
 import AppError from '@shared/errors/AppError'
 
-import swaggerFile from './swagger.json'
+import swaggerFile from '../../../swagger.json'
 ;(async function bootstrap() {
   console.info(new Date(), 'Starting to load routes')
   const appRoutes = (await import('./routes')).default
